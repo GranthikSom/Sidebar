@@ -1,6 +1,6 @@
 # Übersicht SideBar Widget
 
-![Widget Close-up](preview/widget-close.png)
+
 ![Full Desktop Preview](preview/widget-full.png)
 
 A sleek, event-driven, zero-polling workspace widget built for [Übersicht](https://github.com/felixhageloh/uebersicht) on macOS. **Best compatible with [AeroSpace](https://github.com/nikitabobko/AeroSpace)** tiling window manager. It supports multi-monitor tracking, instant app-icon caching, and has been aggressively optimized to consume virtually 0% idle CPU.
