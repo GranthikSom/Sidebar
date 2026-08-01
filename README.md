@@ -3,28 +3,52 @@
 ![Widget Close-up](preview/widget-close.png)
 ![Full Desktop Preview](preview/widget-full.png)
 
-A sleek, event-driven, zero-polling workspace widget built for [Übersicht](https://github.com/felixhageloh/uebersicht) on macOS. **This widget is perfectly tailored and best compatible with [AeroSpace](https://github.com/nikitabobko/AeroSpace)**. It supports multi-monitor tracking, instant app-icon caching, and has been aggressively optimized to consume virtually 0% idle CPU.
+A sleek, event-driven, zero-polling workspace widget built for [Übersicht](https://github.com/felixhageloh/uebersicht) on macOS. **Best compatible with [AeroSpace](https://github.com/nikitabobko/AeroSpace)** tiling window manager. It supports multi-monitor tracking, instant app-icon caching, and has been aggressively optimized to consume virtually 0% idle CPU.
 
 ## ✨ Features
-- **AeroSpace Integration**: Best compatible with AeroSpace! Instantly tracks workspaces and active windows across multiple monitors.
+- **AeroSpace Integration**: Instantly tracks workspaces and active windows across multiple monitors.
 - **Auto App Icons**: Automatically extracts `.icns` from macOS apps and builds a local `.png` cache on the fly.
 - **Optimized Performance**: 0% idle CPU. No background React polling. Updates are strictly pushed via OSAScript hooks.
 - **Hardware Metrics**: Shows battery level, charging status, Wi-Fi status, and smart audio device detection (Speakers vs AirPods/Headphones).
 
-## 🚀 Installation & Usage
+## 📋 Prerequisites
 
-1. Install [Übersicht](https://github.com/felixhageloh/uebersicht) if you haven't already.
-2. Clone this repository directly into your Übersicht widgets folder:
+Before installing the widget, make sure you have the following:
+
+### 1. Auto-Hide the macOS Menu Bar
+The widget is designed for a clean, full-edge desktop. **Auto-hide your menu bar** for the best experience:
+- Open **System Settings → Control Centre → Automatically hide and show the menu bar** → Set to **Always**.
+
+### 2. Auto-Hide the macOS Dock
+Similarly, **auto-hide your Dock** so it doesn't overlap with the sidebar:
+- Open **System Settings → Desktop & Dock → Automatically hide and show the Dock** → Toggle **On**.
+
+### 3. Install AeroSpace (via Homebrew)
+This widget relies on the [AeroSpace](https://github.com/nikitabobko/AeroSpace) tiling window manager. Install it with [Homebrew](https://brew.sh/):
+```bash
+brew install --cask nikitabobko/tap/aerospace
+```
+> **Note:** The widget expects AeroSpace at `/opt/homebrew/bin/aerospace` (the default Homebrew location on Apple Silicon). If you're on an Intel Mac, you may need to update the path in `index.jsx`.
+
+### 4. Install Übersicht
+Download and install [Übersicht](https://github.com/felixhageloh/uebersicht) if you haven't already.
+
+## 🚀 Installation
+
+1. Clone this repository directly into your Übersicht widgets folder:
    ```bash
-   cd ~/Library/Application\ Support/Übersicht/widgets/
-   git clone https://github.com/GranthikSom/Sidebar
+   cd ~/Library/Application\ Support/Übersicht/widgets/
+   git clone https://github.com/GranthikSom/Sidebar SideBar.widget
    ```
-3. To get the **best compatibility with AeroSpace**, update your `~/.aerospace.toml` config to instantly trigger the widget on workspace or focus changes. Add these lines:
+   > **Important:** The folder must be named `SideBar.widget` for Übersicht to recognize it.
+
+2. Update your `~/.aerospace.toml` config to trigger the widget instantly on workspace or focus changes. Add these lines:
    ```toml
-   exec-on-workspace-change = ['bash', '-c', 'exec-and-forget osascript -e "tell application \\"Übersicht\\" to refresh widget id \\"SideBar-widget-index-jsx\\""']
-   on-focus-changed = ['exec-and-forget osascript -e "tell application \\"Übersicht\\" to refresh widget id \\"SideBar-widget-index-jsx\\""']
+   exec-on-workspace-change = ['bash', '-c', 'exec-and-forget osascript -e "tell application \\"Übersicht\\" to refresh widget id \\"SideBar-widget-index-jsx\\""']
+   on-focus-changed = ['exec-and-forget osascript -e "tell application \\"Übersicht\\" to refresh widget id \\"SideBar-widget-index-jsx\\""']
    ```
-4. **Usage:** Once installed and configured with AeroSpace, the widget will automatically appear on your screen and instantly update whenever you switch workspaces, change focus, or change your hardware state.
+
+3. **That's it!** The widget will automatically appear on the left edge of your screen and instantly update whenever you switch workspaces, change window focus, or change your hardware state (battery, Wi-Fi, audio).
 
 ---
 
