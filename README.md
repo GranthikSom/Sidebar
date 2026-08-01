@@ -1,7 +1,5 @@
 # AeroSpace SideBar Widget for Ubersicht
 
-![SideBar Preview](preview.png)
-
 A sleek, event-driven, zero-polling workspace widget for [AeroSpace](https://github.com/nikitabobko/AeroSpace) on macOS, built for [Übersicht](https://github.com/felixhageloh/uebersicht). It supports multi-monitor tracking, instant app-icon caching, and has been aggressively optimized to consume virtually 0% idle CPU.
 
 ## ✨ Features
@@ -16,7 +14,7 @@ A sleek, event-driven, zero-polling workspace widget for [AeroSpace](https://git
 2. Clone this repository into your Übersicht widgets folder:
    ```bash
    cd ~/Library/Application\ Support/Übersicht/widgets/
-   git clone https://github.com/GranthikSom/Ubersicht-and-aeroSpace-config
+   git clone https://github.com/GranthikSom/Sidebar
    ```
 3. Update your `~/.aerospace.toml` config to instantly trigger the widget on workspace or focus changes:
    ```toml
