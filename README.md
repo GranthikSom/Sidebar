@@ -1,7 +1,7 @@
-# Übersicht SideBar Widget
+# Übersicht Vertical Bar Widget
 
 
-![Full Desktop Preview](preview/widget-full.png)
+![Full Desktop Preview](screenshot.png)
 
 A sleek, event-driven, zero-polling workspace widget built for [Übersicht](https://github.com/felixhageloh/uebersicht) on macOS. **Best compatible with [AeroSpace](https://github.com/nikitabobko/AeroSpace)** tiling window manager. It supports multi-monitor tracking, instant app-icon caching, and has been aggressively optimized to consume virtually 0% idle CPU.
 
@@ -28,7 +28,7 @@ This widget relies on the [AeroSpace](https://github.com/nikitabobko/AeroSpace) 
 ```bash
 brew install --cask nikitabobko/tap/aerospace
 ```
-> **Note:** The widget expects AeroSpace at `/opt/homebrew/bin/aerospace` (the default Homebrew location on Apple Silicon). If you're on an Intel Mac, you may need to update the path in `index.jsx`.
+> **Note:** The widget expects AeroSpace at `/opt/homebrew/bin/aerospace` (the default Homebrew location on Apple Silicon). If you're on an Intel Mac, you may need to update the path in `Sidebar.widget/index.jsx`.
 
 ### 4. Install Übersicht
 Download and install [Übersicht](https://github.com/felixhageloh/uebersicht) if you haven't already.
@@ -38,14 +38,14 @@ Download and install [Übersicht](https://github.com/felixhageloh/uebersicht) if
 1. Clone this repository directly into your Übersicht widgets folder:
    ```bash
    cd ~/Library/Application\ Support/Übersicht/widgets/
-   git clone https://github.com/GranthikSom/Sidebar SideBar.widget
+   git clone https://github.com/GranthikSom/VerticalBar
    ```
-   > **Important:** The folder must be named `SideBar.widget` for Übersicht to recognize it.
+   > **Important:** The repository contains a `Sidebar.widget` directory that Übersicht will automatically recognize.
 
 2. Update your `~/.aerospace.toml` config to trigger the widget instantly on workspace or focus changes. Add these lines:
    ```toml
-   exec-on-workspace-change = ['bash', '-c', 'exec-and-forget osascript -e "tell application \\"Übersicht\\" to refresh widget id \\"SideBar-widget-index-jsx\\""']
-   on-focus-changed = ['exec-and-forget osascript -e "tell application \\"Übersicht\\" to refresh widget id \\"SideBar-widget-index-jsx\\""']
+   exec-on-workspace-change = ['bash', '-c', 'exec-and-forget osascript -e "tell application \\\"Übersicht\\\" to refresh widget id \\\"Sidebar-widget-index-jsx\\\""']
+   on-focus-changed = ['exec-and-forget osascript -e "tell application \\\"Übersicht\\\" to refresh widget id \\\"Sidebar-widget-index-jsx\\\""']
    ```
 
 3. **That's it!** The widget will automatically appear on the left edge of your screen and instantly update whenever you switch workspaces, change window focus, or change your hardware state (battery, Wi-Fi, audio).
@@ -77,11 +77,11 @@ All `css({...})` function calls have been extracted *outside* of the React `rend
 ## 🛠️ Customization
 
 ### Moving the Widget
-To move the widget to the right side of the screen, open `index.jsx` and look for the `export const className` block at the top. Change `left: "10px"` to `right: "10px"`.
+To move the widget to the right side of the screen, open `Sidebar.widget/index.jsx` and look for the `export const className` block at the top. Change `left: "10px"` to `right: "10px"`.
 
 ### Adding a New Audio Device (e.g. New AirPods)
-If you buy new headphones and they show up as the "Speaker" icon, check the output of `SideBar.widget/audio_device`. 
-Then, open `index.jsx` and add a unique keyword from that output into the regex parser:
+If you buy new headphones and they show up as the "Speaker" icon, check the output of `Sidebar.widget/audio_device`. 
+Then, open `Sidebar.widget/index.jsx` and add a unique keyword from that output into the regex parser:
 ```javascript
 // Find this line:
 } else if (/airpods|bluetooth|bose|sony|beats|buds|ear|pod/.test(audioRaw)) {
@@ -90,4 +90,4 @@ Then, open `index.jsx` and add a unique keyword from that output into the regex 
 ```
 
 ### Changing Colors
-All colors are globally defined as `css({...})` blocks or explicitly written in the `style={{}}` tags. Search `index.jsx` for `#00b3b3` (Cyan) and replace it with your desired hex code. Ensure you update the `@keyframes blinkFlash` block as well.
+All colors are globally defined as `css({...})` blocks or explicitly written in the `style={{}}` tags. Search `Sidebar.widget/index.jsx` for `#00b3b3` (Cyan) and replace it with your desired hex code. Ensure you update the `@keyframes blinkFlash` block as well.
